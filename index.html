@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>照片滤镜工作台 · WebGL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <h1>照片滤镜工作台</h1>
+    <p>上传一张照片，实时预览 100 种胶片与电影风格滤镜，拖动滑块对比前后效果</p>
+  </header>
+
+  <div class="layout">
+    <aside class="filters-col" id="colLeft" aria-label="滤镜列表 1"></aside>
+
+    <main class="stage" id="stage">
+      <div class="canvas-wrap">
+        <div class="compare" id="compare">
+          <canvas id="canvasOriginal"></canvas>
+          <canvas id="canvasFiltered"></canvas>
+          <div class="handle" id="handle">
+            <div class="handle-line"></div>
+            <div class="handle-grip">⇔</div>
+          </div>
+          <span class="badge before">滤镜</span>
+          <span class="badge after">原始</span>
+          <div class="empty-state" id="emptyState">拖拽图片到此处，或点击下方「上传图片」开始</div>
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <input type="range" id="slider" min="0" max="100" value="50" disabled aria-label="对比滑块">
+      </div>
+
+      <div class="controls">
+        <button class="action" id="uploadBtn" type="button">上传图片</button>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <button class="action" id="downloadBtn" type="button" disabled>下载图片</button>
+      </div>
+
+      <div class="current-filter" id="currentFilterLabel"></div>
+    </main>
+
+    <aside class="filters-col" id="colRight" aria-label="滤镜列表 2"></aside>
+  </div>
+</div>
+
+<script src="filters.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
