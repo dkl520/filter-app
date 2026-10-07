@@ -261,7 +261,7 @@ function createRenderer(canvas) {
     mainRenderer = createRenderer(canvasFiltered);
     thumbRenderer = createRenderer(document.createElement('canvas'));
   } catch (e) {
-    emptyState.textContent = 'WebGL 初始化失败：' + e.message;
+    emptyState.textContent = 'WebGL initialization failed: ' + e.message;
     return;
   }
 
@@ -297,7 +297,7 @@ function createRenderer(canvas) {
     state.activeIndex = i;
     const f = window.FILTERS[i];
     setActiveClass(i);
-    currentFilterLabel.textContent = '当前滤镜 · ' + f.en + ' ' + f.cn;
+    currentFilterLabel.textContent = 'Current filter · ' + f.en + ' ' + f.cn;
     if (state.img) renderMain();
   }
 
@@ -374,7 +374,7 @@ function createRenderer(canvas) {
       selectFilter(randomIndex);
       URL.revokeObjectURL(url);
     };
-    img.onerror = () => { emptyState.textContent = '图片加载失败，请重试'; };
+    img.onerror = () => { emptyState.textContent = 'Image loading failed. Please try again.'; };
     img.src = url;
   }
 
@@ -414,5 +414,5 @@ function createRenderer(canvas) {
   });
 
   // initial label
-  currentFilterLabel.textContent = '上传照片后随机为你选择一个滤镜';
+  currentFilterLabel.textContent = 'Upload a photo to start with a random filter.';
 })();
